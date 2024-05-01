@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_movies_bloc.dart';
 import 'package:flutter_application_3/home_screen.dart';
-import 'package:flutter_application_3/view/bottom_nav_screens./upcoming_movies_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // await dotenv.load(fileName: '.env');
   runApp(const MyApp());

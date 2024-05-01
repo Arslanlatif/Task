@@ -108,12 +108,14 @@ class DetailsScreen extends StatelessWidget {
                                           const BorderSide(color: Colors.blue),
                                       borderRadius: BorderRadius.circular(10))),
                               onPressed: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //       builder: (context) =>
-                                //           const TrailerPlayerSCreen(),
-                                //     ));
+                               Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => TrailerPlayerSCreen(
+                                        id: id!,
+                                        title: title!,
+                                      ),
+                                    ));
                               },
                               child: const Text(
                                 'Watch Trailer',

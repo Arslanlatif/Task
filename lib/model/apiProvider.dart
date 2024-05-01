@@ -23,9 +23,9 @@ Future<DetailsModelClass> fetchDetailsFromApi() async {
   }
 }
 
-Future<VPModelClass> fetchVieoFromApi(int movieId) async {
+Future<VPModelClass> fetchVieoFromApi({required int id}) async {
   String apiUrl =
-      'https://api.themoviedb.org/3/movie/937287videos?api_key=e4391a7b9172d24b19a4d57c52569d62';
+      'https://api.themoviedb.org/3/movie/${id}videos?api_key=e4391a7b9172d24b19a4d57c52569d62';
 
   Uri getUrl() => Uri.parse(apiUrl);
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_movies_bloc.dart';
+ import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_movies_bloc.dart';
 import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_movies_events.dart';
 import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_moview_state.dart';
 import 'package:flutter_application_3/model/details_mc.dart';
