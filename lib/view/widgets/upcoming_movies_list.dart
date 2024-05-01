@@ -31,7 +31,7 @@ class UpcomingMoviesList extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Image.asset(
+                Image.network(
                   movies.posterPath ?? '',
                   height: screenHeight * 0.3,
                   width: screenWidth * 0.86,

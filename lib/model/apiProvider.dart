@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_application_3/model/details_mc.dart';
-import 'package:flutter_application_3/model/env_config.dart';
-import 'package:http/http.dart';
+ import 'package:http/http.dart';
 
 extension ApiResponse on Response {
   bool isSuccess() => statusCode == 200;
@@ -9,9 +8,9 @@ extension ApiResponse on Response {
 }
 
 abstract class ApiProvider {
-  var baseUrl = 'https://api.themoviedb.org/3/movie/';
+  // var baseUrl = 'https://api.themoviedb.org/3/movie/';
   String get apiUrl;
-  Uri getUrl() => Uri.parse(baseUrl + apiUrl);
+  Uri getUrl() => Uri.parse(apiUrl);
   // String get apiKey;
 
   _fetch() async {
@@ -19,7 +18,6 @@ abstract class ApiProvider {
       Response response = await get(getUrl());
       if (response.isSuccess()) {
         return jsonDecode(response.body);
-
       } else {
         return null;
       }
@@ -31,22 +29,11 @@ abstract class ApiProvider {
 
 class UpcomingMoviesApiProvider extends ApiProvider {
   @override
-  String get apiUrl => 'upcoming?api_key=${EnvConfig.apiKey}';
+  String get apiUrl =>
+      'https://api.themoviedb.org/3/movie/upcoming?api_key=e4391a7b9172d24b19a4d57c52569d62';
 
   Future<List<Results>> fetchMovies() async {
     var listMap = await _fetch() as List;
     return listMap.map((e) => Results.fromJson(e)).toList();
   }
 }
-
-// class AlbumApiProvider extends ApiProvider {
-
-//   @override
-//   String get apiUrl => '/albums';
-
-// // To Fatch Album
-//   Future<List<ModelClass>> fetchAlbums() async {
-//     var listMap = await _fetch() as List;
-//     return listMap.map((map) => ModelClass.fromMap(map)).toList();
-//   }
-// }
