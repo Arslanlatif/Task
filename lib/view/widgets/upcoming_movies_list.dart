@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/model/details_mc.dart';
 import 'package:flutter_application_3/view/detials_screen.dart';
- 
+
 class UpcomingMoviesList extends StatelessWidget {
-  const UpcomingMoviesList({
-    super.key,
-  });
+  UpcomingMoviesList({super.key, required this.movies});
+
+  Results movies;
 
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.sizeOf(context).height - kToolbarHeight;
     var screenWidth = MediaQuery.sizeOf(context).width;
-    var screenOrientation = MediaQuery.of(context).orientation;
 
     return Column(
       children: [
@@ -28,10 +28,18 @@ class UpcomingMoviesList extends StatelessWidget {
                 borderRadius: BorderRadiusDirectional.all(Radius.circular(50))),
             height: screenHeight * 0.3,
             width: screenWidth * 0.86,
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Align(alignment: Alignment.bottomCenter, child: Text('data'))
+                Image.asset(
+                  movies.posterPath ?? '',
+                  height: screenHeight * 0.3,
+                  width: screenWidth * 0.86,
+                  fit: BoxFit.cover,
+                ),
+                Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(movies.title ?? ''))
               ],
             ),
           ),
