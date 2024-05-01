@@ -1,8 +1,17 @@
- import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+
+import 'package:flutter_application_3/model/details_mc.dart';
+import 'package:flutter_application_3/view/detials_screen.dart';
 import 'package:flutter_application_3/view/searching_screen.dart';
-  
+
 class SearchScreen extends StatelessWidget {
-  SearchScreen({super.key});
+  final List<Results>? movies;
+
+  SearchScreen({
+    super.key,
+    this.movies,
+  });
 
   final TextEditingController txtController = TextEditingController();
 
@@ -26,7 +35,7 @@ class SearchScreen extends StatelessWidget {
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SearchingScreen(),
+                      builder: (context) => SearchingScreen(movies: movies,),
                     )),
                 controller: txtController,
                 readOnly: true,
@@ -52,32 +61,45 @@ class SearchScreen extends StatelessWidget {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisSpacing: 7, mainAxisSpacing: 2, crossAxisCount: 2),
                 itemBuilder: (context, index) {
-                  return Card(
-                    color: Colors.red,
-                    elevation: 20,
-                    shadowColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    // height: screenHeight * 0.2,
-                    // width: screenWidth * 0.42,
-                    // decoration: BoxDecoration(
-                    //     color: const Color.fromARGB(255, 255, 17, 0),
-                    //     borderRadius: BorderRadius.circular(20)),
-                    child: Stack(
-                      children: [
-                        const FlutterLogo(
-                          size: 100,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              top: screenHeight * 0.17,
-                              left: screenWidth * 0.05),
-                          child: const Text(
-                            'Harry Potte',
-                            style: TextStyle(color: Colors.white),
+                  final result = movies![index];
+
+                  return InkWell(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailsScreen(
+                            imageUrl:
+                                'https://image.tmdb.org/t/p/w200${result.posterPath}',
+                            details: result.overview ?? '',
+                            title: result.title ?? '',
+                            date: result.releaseDate ?? '',
+                            id: result.id,
                           ),
-                        )
-                      ],
+                        )),
+                    child: Card(
+                      color: Colors.red,
+                      elevation: 20,
+                      shadowColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Stack(
+                        children: [
+                          Image.network(
+                            'https://image.tmdb.org/t/p/w200${result.posterPath}',
+                            fit: BoxFit.fill,
+                            width: screenWidth * 0.5,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: screenHeight * 0.17,
+                                left: screenWidth * 0.05),
+                            child: Text(
+                              result.title ?? '',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },

@@ -1,11 +1,25 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
- 
- import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart';
+
 import 'package:flutter_application_3/view/seats_booking_screens/ticket_screen.dart';
- 
- 
+import 'package:flutter_application_3/view/trialer_play.screen.dart';
+
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
+  String? imageUrl;
+  String? details;
+  String? title;
+  int? id;
+  String? date;
+
+  DetailsScreen({
+    super.key,
+    this.imageUrl,
+    this.details,
+    this.title,
+    this.id,
+    this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +36,13 @@ class DetailsScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     //? Image container
-                    Container(
-                      color: Colors.green,
+                    SizedBox(
                       width: screenWidth,
                       height: screenHeight * 0.5,
-                      child: const FlutterLogo(
-                        size: 300,
+                      child: Image.network(
+                        '$imageUrl',
+                        fit: BoxFit.fill,
+                        // width: ,
                       ),
                     ),
                     //? back Icon button
@@ -70,8 +85,10 @@ class DetailsScreen extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          const TicketScreen(),
+                                      builder: (context) => TicketScreen(
+                                        title: title,
+                                        date: date,
+                                      ),
                                     ));
                               },
                               child: const Text(
@@ -91,12 +108,12 @@ class DetailsScreen extends StatelessWidget {
                                           const BorderSide(color: Colors.blue),
                                       borderRadius: BorderRadius.circular(10))),
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const TicketScreen(),
-                                    ));
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) =>
+                                //           const TrailerPlayerSCreen(),
+                                //     ));
                               },
                               child: const Text(
                                 'Watch Trailer',
@@ -182,7 +199,7 @@ class DetailsScreen extends StatelessWidget {
                       padding: EdgeInsets.only(
                           left: screenWidth * 0.04, top: screenHeight * 0.02),
                       child: Text(
-                        'Ove rView lkgjsd lkj hf lksd jflksdj flkjlk fjsd ljskgh fdjkfhsdf fsdfhsdkfn fsdf Ove rView lkgjsd lkj hf lksd jflksdj flkjlk fjsd ljskgh fdjkfhsdf fsdfhsdkfn fsdf',
+                        '$details',
                         style: TextStyle(fontSize: screenHeight * 0.02),
                       ),
                     )

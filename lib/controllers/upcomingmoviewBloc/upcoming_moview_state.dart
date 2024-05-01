@@ -1,22 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_application_3/model/details_mc.dart';
 
-@immutable
-abstract class UpcomingMoviesState {}
-
-@immutable
-class UpComingMoviesLoadingState extends UpcomingMoviesState {}
-
-@immutable
-class UpComingMoviesLoadedState extends UpcomingMoviesState {
-  final List<Results> movies;
-
-  UpComingMoviesLoadedState({required this.movies});
+abstract class UpcomingMoviesState {
+  const UpcomingMoviesState();
 }
 
-@immutable
-class UpComingMoviesErrorState extends UpcomingMoviesState {
-  final String error;
+class UpcomingMoviesStateInitial extends UpcomingMoviesState {}
 
-  UpComingMoviesErrorState({required this.error});
+class UpcomingMoviesStateLoading extends UpcomingMoviesState {}
+
+class UpcomingMoviesStateLoaded extends UpcomingMoviesState {
+  final DetailsModelClass details;
+
+  const UpcomingMoviesStateLoaded(this.details);
+}
+
+class UpcomingMoviesStateError extends UpcomingMoviesState {
+  final String message;
+
+  const UpcomingMoviesStateError(this.message);
 }

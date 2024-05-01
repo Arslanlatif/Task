@@ -1,9 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/model/details_mc.dart';
+import 'package:flutter_application_3/view/detials_screen.dart';
 
-class SearchingScreen extends StatelessWidget {
-  SearchingScreen({super.key});
+class SearchingScreen extends StatefulWidget {
+  final List<Results>? movies;
+
+  SearchingScreen({
+    super.key,
+    this.movies,
+  });
+
+  @override
+  State<SearchingScreen> createState() => _SearchingScreenState();
+}
+
+class _SearchingScreenState extends State<SearchingScreen> {
+  late List<Results> filteredMovies;
 
   final TextEditingController txtController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    filteredMovies = widget.movies ?? [];
+    txtController.addListener(filterMovies);
+  }
+
+  void filterMovies() {
+    final String query = txtController.text;
+    setState(() {
+      filteredMovies = widget.movies!
+          .where((movie) =>
+              movie.title!.contains(query) || movie.overview!.contains(query))
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +66,38 @@ class SearchingScreen extends StatelessWidget {
           Expanded(
             flex: 9,
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: filteredMovies.length,
               itemBuilder: (context, index) {
+                final result = filteredMovies[index];
+
                 return ListTile(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsScreen(
+                          imageUrl:
+                              'https://image.tmdb.org/t/p/w200${result.posterPath}',
+                          details: result.overview ?? '',
+                          title: result.title ?? '',
+                          date: result.releaseDate ?? '',
+                          id: result.id,
+                        ),
+                      )),
                   leading: Container(
                       height: 70,
                       color: Colors.redAccent,
-                      child: FlutterLogo(size: 30)),
+                      child: Image.network(
+                        'https://image.tmdb.org/t/p/w200${result.posterPath}',
+                        fit: BoxFit.fill,
+                      )),
                   title: Text(
-                    'HarryPotter',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    result.title ?? '',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Text('js fkjh sdk fjh sdj kf h jfsdkh'),
+                  subtitle: Text(
+                    result.overview ?? '',
+                    style: const TextStyle(color: Colors.grey),
+                  ),
                 );
               },
             ),

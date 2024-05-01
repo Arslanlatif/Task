@@ -1,7 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/view/bottom_nav_screens./upcoming_movies_screen.dart';
 
 class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({super.key});
+  String? title;
+  String? date;
+
+  PaymentScreen({
+    super.key,
+    this.title,
+    this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +20,17 @@ class PaymentScreen extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 253, 246, 246),
       appBar: AppBar(
         centerTitle: true,
-        title: const Column(
+        title: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Name',
-                style: TextStyle(
+            Text(title ?? '',
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 30,
                     fontWeight: FontWeight.bold)),
-            Text('In Theaters',
-                style: TextStyle(
+            Text('In Theaters $date',
+                style: const TextStyle(
                     color: Colors.blueAccent,
                     fontSize: 20,
                     fontWeight: FontWeight.bold)),
@@ -111,7 +120,8 @@ class PaymentScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const PaymentScreen()));
+                                builder: (context) =>
+                                    const UpcomingMoviesScreen()));
                       },
                       child: const Text('Select Seats',
                           style: TextStyle(

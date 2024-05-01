@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
+abstract class UpcomingMoviesEvent {
+  const UpcomingMoviesEvent();
+}
 
-@immutable
-abstract class UpcomingMoviesEvents {}
-
-@immutable
-class FetchUpcomingMovies extends UpcomingMoviesEvents {}
+class FetchUpcomingMoviesEvent extends UpcomingMoviesEvent {}
