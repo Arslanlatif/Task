@@ -4,6 +4,7 @@ abstract class VideosPlayerEvent {
 
 class PlaysFetchVideoUrlEvent extends VideosPlayerEvent {
   int movieId;
+
   PlaysFetchVideoUrlEvent(this.movieId);
 }
 

@@ -4,15 +4,10 @@ import 'package:flutter_application_3/home_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'controllers/videos_player_bloc.dart/videos_player_bloc.dart';
-import 'package:connectivity/connectivity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final connectivityResult = await Connectivity().checkConnectivity();
-  if (connectivityResult == ConnectivityResult.none) {
-    // ignore: avoid_print
-    print('No internet connection');
-  }
+
   runApp(const MyApp());
 }
 
