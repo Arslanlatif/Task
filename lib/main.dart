@@ -3,9 +3,16 @@ import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_mo
 import 'package:flutter_application_3/home_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+import 'controllers/videos_player_bloc.dart/videos_player_bloc.dart';
+import 'package:connectivity/connectivity.dart';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await dotenv.load(fileName: '.env');
+  final connectivityResult = await Connectivity().checkConnectivity();
+  if (connectivityResult == ConnectivityResult.none) {
+    // ignore: avoid_print
+    print('No internet connection');
+  }
   runApp(const MyApp());
 }
 
@@ -14,8 +21,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UpcomingMoviesStateBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => UpcomingMoviesStateBloc(),
+        ),
+        BlocProvider(
+          create: (context) => VideosPlayerBloc(),
+        )
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

@@ -18,8 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 //! List of bottomNavigationBar's Screens
   final List<Widget> screens = [
     const UpcomingMoviesScreen(),
-    SearchScreen(),
-    const ProfileScreen(),
+     const ProfileScreen(),
     const FavouriteScreen()
   ];
 

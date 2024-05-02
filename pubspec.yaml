@@ -41,7 +41,8 @@ dependencies:
   chewie: ^1.8.1
   video_player: ^2.8.6
   device_info_plus: ^10.1.0
- 
+  connectivity: ^3.0.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

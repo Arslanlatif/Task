@@ -14,6 +14,7 @@ class VideosPlayerStateLoaded extends VideosPlayerState {
   final VPModelClass videos;
   final VideoPlayerController videoPlayerController;
   final ChewieController chewieController;
+  
   VideosPlayerStateLoaded(
       {required this.videos,
       required this.chewieController,

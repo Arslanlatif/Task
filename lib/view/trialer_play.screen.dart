@@ -25,6 +25,12 @@ class _TrailerPlayerSCreenState extends State<TrailerPlayerSCreen> {
   }
 
   @override
+  void dispose() {
+    videosPlayerBloc.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 36, 35, 35),

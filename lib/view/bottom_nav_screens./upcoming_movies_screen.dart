@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
- import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_movies_bloc.dart';
+import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_movies_bloc.dart';
 import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_movies_events.dart';
 import 'package:flutter_application_3/controllers/upcomingmoviewBloc/upcoming_moview_state.dart';
 import 'package:flutter_application_3/model/details_mc.dart';
@@ -15,8 +15,6 @@ class UpcomingMoviesScreen extends StatefulWidget {
 }
 
 class _UpcomingMoviesScreenState extends State<UpcomingMoviesScreen> {
- 
- 
   @override
   void initState() {
     super.initState();
@@ -35,7 +33,7 @@ class _UpcomingMoviesScreenState extends State<UpcomingMoviesScreen> {
         title: const Text('Watch'),
         actions: [
           IconButton(
-               onPressed: () {
+            onPressed: () {
               final state = context.read<UpcomingMoviesStateBloc>().state;
               if (state is UpcomingMoviesStateLoaded) {
                 final List<Results> movies = state.details.results!;
@@ -47,7 +45,8 @@ class _UpcomingMoviesScreenState extends State<UpcomingMoviesScreen> {
                 );
               }
             },
-            icon: const Icon(Icons.search),)
+            icon: const Icon(Icons.search),
+          )
         ],
       ),
       body: BlocBuilder<UpcomingMoviesStateBloc, UpcomingMoviesState>(
@@ -58,8 +57,8 @@ class _UpcomingMoviesScreenState extends State<UpcomingMoviesScreen> {
             return ListView.builder(
               itemCount: state.details.results!.length,
               itemBuilder: (context, index) {
-                final result = state.details.results![index];
-                 
+                var result = state.details.results![index];
+
                 return GestureDetector(
                   onTap: () => Navigator.push(
                       context,
