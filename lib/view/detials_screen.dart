@@ -108,7 +108,7 @@ class DetailsScreen extends StatelessWidget {
                                           const BorderSide(color: Colors.blue),
                                       borderRadius: BorderRadius.circular(10))),
                               onPressed: () {
-                               Navigator.push(
+                                Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => TrailerPlayerSCreen(
@@ -190,11 +190,13 @@ class DetailsScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(
                           right: screenWidth * 0.73, top: screenHeight * 0.05),
-                      child: Text(
-                        'OverView',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: screenHeight * 0.02),
+                      child: SingleChildScrollView(
+                        child: Text(
+                          'OverView',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: screenHeight * 0.02),
+                        ),
                       ),
                     ),
                     Padding(

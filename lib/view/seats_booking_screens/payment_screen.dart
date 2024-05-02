@@ -26,14 +26,14 @@ class PaymentScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(title ?? '',
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: screenWidth * 0.08,
                     fontWeight: FontWeight.bold)),
             Text('In Theaters $date',
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.blueAccent,
-                    fontSize: 20,
+                    fontSize: screenWidth * 0.05,
                     fontWeight: FontWeight.bold)),
           ],
         ),
@@ -69,7 +69,12 @@ class PaymentScreen extends StatelessWidget {
                     const Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [Text('VIP (150)'), Text('Regular (50)')],
+                      children: [
+                        Icon(Icons.person),
+                        Text('VIP (150)'),
+                        Icon(Icons.chair),
+                        Text('Regular (50)')
+                      ],
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: screenWidth * 0.14),

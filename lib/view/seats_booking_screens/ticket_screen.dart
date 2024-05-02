@@ -25,14 +25,14 @@ class TicketScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(title ?? '',
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: screenWidth * 0.08,
                     fontWeight: FontWeight.bold)),
             Text('In Theaters  $date',
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.blueAccent,
-                    fontSize: 20,
+                    fontSize: screenWidth * 0.05,
                     fontWeight: FontWeight.bold)),
           ],
         ),

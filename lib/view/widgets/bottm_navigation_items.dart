@@ -9,17 +9,27 @@ class BottomNavigatoinItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-        currentIndex: currentIndex,
-        fixedColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.brown,
-        onTap: onTap,
-        items: const [
-          BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
-          BottomNavigationBarItem(
-              label: 'Favorite', icon: Icon(Icons.favorite)),
-          BottomNavigationBarItem(label: 'Profile', icon: Icon(Icons.person))
-        ]);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(78),
+      child: Container(
+        width: 400,
+        height: 90,
+        decoration: BoxDecoration(
+            color: Colors.brown, borderRadius: BorderRadius.circular(120)),
+        child: BottomNavigationBar(
+            currentIndex: currentIndex,
+            fixedColor: Colors.black,
+            unselectedItemColor: Colors.grey,
+            backgroundColor: Colors.brown,
+            onTap: onTap,
+            items: const [
+              BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
+              BottomNavigationBarItem(
+                  label: 'Favorite', icon: Icon(Icons.favorite)),
+              BottomNavigationBarItem(
+                  label: 'Profile', icon: Icon(Icons.person))
+            ]),
+      ),
+    );
   }
 }

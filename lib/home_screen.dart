@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 //! List of bottomNavigationBar's Screens
   final List<Widget> screens = [
     const UpcomingMoviesScreen(),
-     const ProfileScreen(),
+    const ProfileScreen(),
     const FavouriteScreen()
   ];
 
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
         child: BottomNavigatoinItems(
           currentIndex: currentIndex,
           onTap: (index) {

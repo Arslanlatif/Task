@@ -19,9 +19,11 @@ class VideosPlayerBloc extends Bloc<VideosPlayerEvent, VideosPlayerState> {
       }
       final vmModel = await fetchVieoFromApi(id: event.movieId);
       log(vmModel.toJson().toString());
+      var video = vmModel.homepage;
 
-      final videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
-          "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4"));
+      final videoPlayerController =
+          VideoPlayerController.networkUrl(Uri.parse("$video"));
+
       await videoPlayerController.initialize();
       final chewieController = ChewieController(
         videoPlayerController: videoPlayerController,
