@@ -9,10 +9,12 @@ class BottomNavigatoinItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.sizeOf(context).height;
+    var screenWidth = MediaQuery.sizeOf(context).width;
     return ClipRRect(
-      borderRadius: BorderRadius.circular(78),
+      borderRadius: BorderRadius.circular(58),
       child: Container(
-        width: 400,
+        width: screenWidth * 0.96,
         height: 90,
         decoration: BoxDecoration(
             color: Colors.brown, borderRadius: BorderRadius.circular(120)),

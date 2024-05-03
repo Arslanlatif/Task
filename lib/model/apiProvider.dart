@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter_application_3/model/VPModelClass.dart';
 import 'package:flutter_application_3/model/details_mc.dart';
+import 'package:flutter_application_3/model/env_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
@@ -10,8 +11,9 @@ extension ApiResponse on Response {
 }
 
 Future<DetailsModelClass> fetchDetailsFromApi() async {
-  String apiUrl =
-      'https://api.themoviedb.org/3/movie/upcoming?api_key=e4391a7b9172d24b19a4d57c52569d62';
+  String apiKey = EnvConfig.apiKey;
+
+  String apiUrl = 'https://api.themoviedb.org/3/movie/upcoming?api_key=$apiKey';
 
   Uri getUrl() => Uri.parse(apiUrl);
 
@@ -23,15 +25,22 @@ Future<DetailsModelClass> fetchDetailsFromApi() async {
   }
 }
 
-Future<VPModelClass> fetchVieoFromApi({required int id}) async {
+Future<String?> fetchVideoKeyFromApi({required int id}) async {
+  String apiKey = EnvConfig.apiKey;
+
   String apiUrl =
-      'https://api.themoviedb.org/3/movie/${id}videos?api_key=e4391a7b9172d24b19a4d57c52569d62';
+      'https://api.themoviedb.org/3/movie/$id/videos?api_key=$apiKey';
 
   Uri getUrl() => Uri.parse(apiUrl);
 
   final response = await http.get(getUrl());
   if (response.isSuccess()) {
-    return VPModelClass.fromJson(jsonDecode(response.body));
+    VPModelClass videoData = VPModelClass.fromJson(jsonDecode(response.body));
+    if (videoData.results != null && videoData.results!.isNotEmpty) {
+      return videoData.results![0].key;
+    } else {
+      return null;
+    }
   } else {
     throw Exception('Failed to load details');
   }

@@ -79,7 +79,8 @@ class DetailsScreen extends StatelessWidget {
                                   fixedSize: Size(
                                       screenWidth * 0.9, screenHeight * 0.08),
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
+                                      borderRadius: BorderRadius.circular(
+                                          screenWidth * 0.03))),
                               onPressed: () {
                                 //
                                 Navigator.push(
@@ -106,7 +107,8 @@ class DetailsScreen extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                       side:
                                           const BorderSide(color: Colors.blue),
-                                      borderRadius: BorderRadius.circular(10))),
+                                      borderRadius: BorderRadius.circular(
+                                          screenWidth * 0.03))),
                               onPressed: () {
                                 Navigator.push(
                                     context,
@@ -148,38 +150,44 @@ class DetailsScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: screenWidth * 0.15),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Chip(
                             shape: RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.transparent),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(13))),
-                            backgroundColor: Color.fromARGB(255, 129, 221, 132),
-                            label: Text(
+                                side:
+                                    const BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(screenWidth * 0.04))),
+                            backgroundColor:
+                                const Color.fromARGB(255, 129, 221, 132),
+                            label: const Text(
                               'Action',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
                           Chip(
                             shape: RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.transparent),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(13))),
-                            backgroundColor: Color.fromARGB(255, 11, 135, 237),
-                            label: Text(
+                                side:
+                                    const BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(screenWidth * 0.04))),
+                            backgroundColor:
+                                const Color.fromARGB(255, 11, 135, 237),
+                            label: const Text(
                               'Adventure',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
                           Chip(
                             shape: RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.transparent),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(13))),
-                            backgroundColor: Color.fromARGB(255, 29, 240, 36),
-                            label: Text(
+                                side:
+                                    const BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(screenWidth * 0.04))),
+                            backgroundColor:
+                                const Color.fromARGB(255, 29, 240, 36),
+                            label: const Text(
                               'Darama',
                               style: TextStyle(color: Colors.white),
                             ),

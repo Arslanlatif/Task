@@ -64,24 +64,47 @@ class PaymentScreen extends StatelessWidget {
                     const Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [Text('Selected'), Text('Not Available')],
+                      children: [
+                        Icon(
+                          Icons.chair,
+                          color: Colors.amber,
+                        ),
+                        Text('Selected'),
+                        Icon(
+                          Icons.chair,
+                          color: Colors.grey,
+                        ),
+                        Text('Not Available')
+                      ],
                     ),
                     const Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Icon(Icons.person),
-                        Text('VIP (150)'),
-                        Icon(Icons.chair),
-                        Text('Regular (50)')
+                        Icon(
+                          Icons.chair,
+                          color: Colors.blue,
+                        ),
+                        Text('VIP (\$150)'),
+                        Icon(
+                          Icons.chair,
+                          color: Color.fromARGB(255, 0, 255, 229),
+                        ),
+                        Text('Regular (\$50)')
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: screenWidth * 0.14),
-                      child: const Chip(
-                        elevation: 10,
-                        shadowColor: Colors.black,
-                        label: Text('4/3 row '),
+                      padding: EdgeInsets.only(left: screenWidth * 0.08),
+                      child: Container(
+                        height: screenHeight * 0.06,
+                        width: screenWidth * 0.26,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 231, 227, 227),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text('4/3 row'), Icon(Icons.close)],
+                        ),
                       ),
                     )
                   ],
@@ -105,7 +128,7 @@ class PaymentScreen extends StatelessWidget {
                         style: TextStyle(color: Colors.grey),
                       ),
                       Text(
-                        '50',
+                        '\$50',
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )

@@ -38,6 +38,9 @@ class _SearchingScreenState extends State<SearchingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.sizeOf(context).height;
+    double screenWidth = MediaQuery.sizeOf(context).width;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -46,7 +49,7 @@ class _SearchingScreenState extends State<SearchingScreen> {
             flex: 1,
             child: SizedBox(
               height: 50,
-              width: 300,
+              width: screenWidth * 0.95,
               child: TextFormField(
                 controller: txtController,
                 autofocus: true,

@@ -1,5 +1,5 @@
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-// class EnvConfig {
-//   static String get apiKey => dotenv.env['API_KEY'] ?? '';
-// }
+class EnvConfig {
+  static String get apiKey => dotenv.env['API_KEY'] ?? '';
+}
