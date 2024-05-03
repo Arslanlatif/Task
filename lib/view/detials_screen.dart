@@ -207,12 +207,18 @@ class DetailsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: screenWidth * 0.04, top: screenHeight * 0.02),
-                      child: Text(
-                        '$details',
-                        style: TextStyle(fontSize: screenHeight * 0.02),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: screenWidth * 0.05,
+                              right: screenWidth * 0.04,
+                              top: screenHeight * 0.01),
+                          child: Text(
+                            '$details',
+                            style: TextStyle(fontSize: screenHeight * 0.02),
+                          ),
+                        ),
                       ),
                     )
                   ],
